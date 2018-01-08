@@ -1,4 +1,4 @@
 ;; package.lisp
 
-(defpackage#:game-sandbox
+(defpackage #:game-sandbox
  (:use #:cl))
