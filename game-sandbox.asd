@@ -1,4 +1,4 @@
-;;;; skirmish.asd
+;;;; game-sandbox.asd
 
 (asdf:defsystem #:game-sandbox
   :description "An experimental 2d game in progress primarily to test the graphics lib Mariko and editing features"
