@@ -15,40 +15,6 @@
 		 :right x1
 		 :bottom y1))
 
-;;; Getters
-#|(defmethod half-width ((object hitbox))  
-  (* (width object) .5))
-
-(defmethod half-height ((object hitbox)) 
-  (* (height object) .5))
-
-(defmethod top ((object hitbox)) 
-  (- (center-y object) (half-height object)))
-
-(defmethod right ((object hitbox)) 
-  (+ (center-x object) (half-width object)))
-
-(defmethod bottom ((object hitbox)) 
-  (+ (center-y object) (half-height object)))
-
-;;(defmethod left ((object hitbox) x) 
- ;; (setf (width object) x))
-
-(defmethod location ((object hitbox))
-  (values (center-x object) (center-y object)))
-
-(defmethod size ((object hitbox))
-  (values (width object) (height object)))
-
-;;; Setters
-(defmethod set-sizef ((object hitbox) (width number) (height number))
-  (setf (width object) width)
-  (setf (height object) height))
-
-(defmethod set-positionf ((object hitbox) (x number)  (y number))
-  (setf (center-x object) x)
-  (setf (center-y object) y))
-|#
 (defmethod update-positionf ((object hitbox) (x0 number) (y0 number) (x1 number) (y1 number))
   (set-left x0 object)
   (set-top y0 object)
