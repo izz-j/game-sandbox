@@ -15,10 +15,10 @@
 
 ;;make hitbox with initial position values
 (defparameter *object1*
-  (make-hitbox 455 12 596 192))
+  (make-hitbox 455 12 592 192))
 
-;;(defparameter *object2*
- ;; (make-hitbox 596 192))
+(defparameter *object2*
+  (make-hitbox 455 12  592 192))
 
 ;;(update-moving-position *object1* *x* *y*)
 
@@ -33,19 +33,19 @@
   (when (and (eq key :left) (or (eq action :press) (eq action :repeat)))
     (progn
       (princ "collide:")
-      (princ (left-collidep *object1*))
+      (princ (left-collidep *object1* *object2*))
       (terpri)
       (setf *x* (- *x* 10))))
   (when (and (eq key :right) (or (eq action :press) (eq action :repeat)))
     (progn
       (princ "collide:")
-      (princ (right-collidep *object1*))
+      (princ (right-collidep *object1* *object2*))
       (terpri)
       (setf *x* (+ *x* 10))))
   (when (and (eq key :up) (or (eq action :press) (eq action :repeat)))
     (progn
       (princ "collide:")
-      (princ (top-collidep *object1*))
+      (princ (top-collidep *object1* *object2*))
       (terpri)
       (setf *y* (- *y* 10))))
   (when (and (eq key :down) (or (eq action :press) (eq action :repeat)))
@@ -56,7 +56,7 @@
   (mariko:set-viewport w h))
 
 
-(defun build-house ()
+(defun draw-test1 ()
   (let ((w 1024)
 	(h 1024))
     ;;for now packer does not generate correct x coordinates
@@ -85,13 +85,13 @@
 	(loop until (glfw:window-should-close-p)
 	   do (gl:clear :color-buffer)
 	  ;; do (draw-line 455 592 12 12)
-	   do (build-house)
+	   do (draw-test1)
 	   ;;constant must be added. cannot
 	     ;;add getters because it will continuously increase/decrease
 	   do  (update-positionf *object1*
 				 (+ 455 *x*)
 				 (+ 12 *y*)
-				 (+ 596 *x*)
+				 (+ 592 *x*)
 				 (+ 192 *y*))
 	;;   do (princ (get-right *object1*))
 	  ;; do (terpri)

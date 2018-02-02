@@ -61,18 +61,18 @@
 #|object1's top y must be  less than object2's bottom y to collide and
 object1's right x must be greater than object2's left x to be
 a top side collision|#
-(defmethod top-collidep ((object hitbox))
-  (and (not (>= (get-top object) 192)) (not (<= (get-right object) 455))
-       (not (>= (get-left object) 596))))
+(defmethod top-collidep ((object hitbox) (object2 hitbox))
+  (and (not (>= (get-top object) (get-bottom object2))) (not (<= (get-right object) (get-left object2)))
+       (not (>= (get-left object) (get-right object2)))))
 
 #|object1 x must be greater than object2's x to collide and
 object1's y must be less than the bottom of object 2's y to be
 a right  side collision |#
-(defmethod right-collidep ((object hitbox))
-  (and (not (<= (get-right object) 455)) (top-collidep object) (not (> (get-right object) 596))))
+(defmethod right-collidep ((object hitbox) (object2 hitbox))
+  (and (not (<= (get-right object) (get-left object2))) (top-collidep object object2) (not (> (get-right object) (get-right object2)))))
 
-(defmethod left-collidep ((object hitbox))
-  (and (not (>= (get-left object)  596)) (top-collidep object) (not (< (get-left object) 455))))
+(defmethod left-collidep ((object hitbox) (object2 hitbox))
+  (and (not (>= (get-left object)  (get-right object2))) (top-collidep object object2) (not (< (get-left object) (get-left object2)))))
 
    ;;(and (<= (bottom object2) (top object)) (< (center-x object) 455))))     ;Above, no collide
 	;;(>= (top object2) (bottom object))    ;Below, no collide
