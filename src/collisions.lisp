@@ -40,10 +40,22 @@ a right  side collision |#
 (defmethod left-collidep ((object hitbox) (object2 hitbox))
   (and (not (>= (get-left object)  (get-right object2))) (top-collidep object object2) (not (< (get-left object) (get-left object2)))))
 
-   ;;(and (<= (bottom object2) (top object)) (< (center-x object) 455))))     ;Above, no collide
-	;;(>= (top object2) (bottom object))    ;Below, no collide
-	;;(<= (right object2) (left object))    ;Left of, no collide
-;;	(>= (left object2) (right object))))) ;Right of, no collide
+(defmethod check-collide ((object1 hitbox) (object2 hitbox) key)
+  (if (equal key "left")
+      (progn
+	(princ "collide:")
+	(princ (left-collidep object1 object2))
+	(terpri)))
+  (if (equal key "right")
+      (progn
+	(princ "collide: ")
+	(princ (right-collidep object1 object2))
+	(terpri)))
+  (if (equal key "up")
+      (progn
+	(princ "collide: ")
+	(princ (top-collidep object1 object2))
+	(terpri))))
   
 #|
 ;;check hitbox vs hitbox vector

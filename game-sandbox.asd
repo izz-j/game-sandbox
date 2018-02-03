@@ -9,5 +9,6 @@
   :depends-on (#:mariko #:cl-glfw3 #:gamebox-sprite-packer)
   :pathname "src"
   :components ((:file "package")
+	       (:file "entity")
 	       (:file "collisions")
                (:file "test")))
